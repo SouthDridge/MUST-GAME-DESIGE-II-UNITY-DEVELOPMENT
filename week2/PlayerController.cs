@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-// ´´½¨Ê±Ã»ÓĞ¸ÄºÃÃû×Ö¾ÍÔÚclassºóµÄ×Ö¶Î¸ÄÎªPlayerController
+// åˆ›å»ºæ—¶æ²¡æœ‰æ”¹å¥½åå­—å°±åœ¨classåçš„å­—æ®µæ”¹ä¸ºPlayerController
 public class PlayerController : MonoBehaviour
 {
     public PlayerInputControl inputControl;
@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
         // sr = GetComponent<SpriteRenderer>();
 
         
-        // ¶ÁÈ¡ÌøÔ¾°´¼ü
+        // è¯»å–è·³è·ƒæŒ‰é”®
         inputControl.Gameplay.Jump.started += Jump;
         
     }
@@ -46,34 +46,34 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        // ³ÖĞø¶ÁÈ¡ÊäÈë
+        // æŒç»­è¯»å–è¾“å…¥
         inputDirection = inputControl.Gameplay.Move.ReadValue<Vector2>();  
     }
 
-    private void FixedUpdate() // ÒÔ¹Ì¶¨Ö¡ÂÊ½øĞĞ¸üĞÂ£¬·½Ê½Éè±¸Ö¡ÂÊ²»Í¬²úÉúµÄ½á¹û²»Ò»ÖÂ
+    private void FixedUpdate() // ä»¥å›ºå®šå¸§ç‡è¿›è¡Œæ›´æ–°ï¼Œæ–¹å¼è®¾å¤‡å¸§ç‡ä¸åŒäº§ç”Ÿçš„ç»“æœä¸ä¸€è‡´
     {
-        Move(); // µ÷ÓÃMoveº¯Êı
+        Move(); // è°ƒç”¨Moveå‡½æ•°
 
         // Filp();
     }
 
     public void Move()  
     {
-        // Íæ¼ÒÒÆ¶¯
+        // ç©å®¶ç§»åŠ¨
         rb.velocity = new Vector2 (inputDirection.x * speed * Time.deltaTime, rb.velocity.y);
-        // x Öá£º°´¼ü·½Ïò * ËÙ¶È * Time.deltaTime£» y Öá£º±£³Ö¸ÕÌåµÄÔ­Ê¼ËÙ¶È -9.81£¨ÖØÁ¦£©
+        // x è½´ï¼šæŒ‰é”®æ–¹å‘ * é€Ÿåº¦ * Time.deltaTimeï¼› y è½´ï¼šä¿æŒåˆšä½“çš„åŸå§‹é€Ÿåº¦ -9.81ï¼ˆé‡åŠ›ï¼‰
 
         int faceDir = (int)transform.localScale.x;
-        // transform.localScale.x ÊÇÒ»¸ö¸¡µãÊıÓÃÓÚ½ÓÊÕ²»Í¬ÊäÈëÉè±¸µÄÊäÈë
-        // ÔÚÇ°Ãæ¼ÓÉÏ(int) °Ñ¸¡µãÊıÇ¿ÖÆ×ª»¯ÎªÕûÊı±ãÓÚºóĞøÊ¹ÓÃ
+        // transform.localScale.x æ˜¯ä¸€ä¸ªæµ®ç‚¹æ•°ç”¨äºæ¥æ”¶ä¸åŒè¾“å…¥è®¾å¤‡çš„è¾“å…¥
+        // åœ¨å‰é¢åŠ ä¸Š(int) æŠŠæµ®ç‚¹æ•°å¼ºåˆ¶è½¬åŒ–ä¸ºæ•´æ•°ä¾¿äºåç»­ä½¿ç”¨
         
-        // ÅĞ¶ÏÊäÈëµÄ·½Ïò ´óÓÚ0,faceDir = 1(ÓÒ)£»Ğ¡ÓÚ0, faceDir = -1(×ó)
+        // åˆ¤æ–­è¾“å…¥çš„æ–¹å‘ å¤§äº0,faceDir = 1(å³)ï¼›å°äº0, faceDir = -1(å·¦)
         if (inputDirection.x > 0)
             faceDir = 1;
         if (inputDirection.x < 0)
             faceDir = -1;
 
-        // Í¨¹ıµ÷ÕûscaleÊµÏÖ ÈËÎï·­×ª
+        // é€šè¿‡è°ƒæ•´scaleå®ç° äººç‰©ç¿»è½¬
         transform.localScale = new Vector3(faceDir, 1, 1);
     }
     private void Jump(InputAction.CallbackContext obj)
