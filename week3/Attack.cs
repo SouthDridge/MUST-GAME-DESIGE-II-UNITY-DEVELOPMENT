@@ -11,6 +11,6 @@ public class Attack : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {
         other.GetComponent<Character>()?.TakeDamage(this);
-        // 获取被攻击对象的Character组件
+        // 禄帽脠隆卤禄鹿楼禄梅露脭脧贸碌脛Character脳茅录镁
     }
 }
